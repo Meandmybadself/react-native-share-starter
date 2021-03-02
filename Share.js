@@ -10,7 +10,7 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
+const Share = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -20,7 +20,7 @@ const App = () => {
           style={styles.scrollView}>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Main App</Text>
+              <Text style={styles.sectionTitle}>Share App</Text>
             </View>
           </View>
         </ScrollView>
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Share;
