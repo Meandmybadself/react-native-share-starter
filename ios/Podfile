@@ -1,12 +1,16 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'episogood' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
+
+  target 'EpisogoodShare' do
+    inherit! :complete
+  end
 
   # Enables Flipper.
   #
@@ -15,10 +19,10 @@ target 'episogood' do
   use_flipper!
   post_install do |installer|
     flipper_post_install(installer)
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
+      end
+    end
   end
-end
-
-target 'EpisogoodShare' do
-  use_native_modules!
-  inherit! :complete
 end
